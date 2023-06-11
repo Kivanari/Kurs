@@ -226,24 +226,53 @@ public:
 	}
 };
 
+
 int main() {
 	setlocale(LC_ALL, "rus");
 	int n;
-	cout << "Введите количество уравнений ";
+	cout << "Введите количество уравнений: ";
 	cin >> n;
 
+	while (cin.fail() || n <= 0) {
+		cout << "Ошибка: введено неверное значение! Пожалуйста, введите положительное целое число: ";
+		cin.clear();
+		cin.ignore(numeric_limits< streamsize>::max(), '\n');
+		cin >> n;
+	}
+
 	for (int i = 1; i < n + 1; i++) {
-		cout << "Введите коэффициенты для " << i << " - го уравнения" << endl;
+		std::cout << "Введите коэффициенты для " << i << "-го уравнения" << std::endl;
 		double a, b, c;
+
 		cout << "Введите коэффициент A: ";
 		cin >> a;
+
+		while (std::cin.fail()) {
+			cout << "Ошибка: введено неверное значение! Пожалуйста, введите число: ";
+			cin.clear();
+			cin.ignore(numeric_limits< streamsize>::max(), '\n');
+			cin >> a;
+		}
 
 		cout << "Введите коэффициент B: ";
 		cin >> b;
 
+		while (cin.fail()) {
+			cout << "Ошибка: введено неверное значение! Пожалуйста, введите число: ";
+			cin.clear();
+			cin.ignore(numeric_limits< streamsize>::max(), '\n');
+			cin >> b;
+		}
+
 		cout << "Введите коэффициент C: ";
 		cin >> c;
 
+		while (cin.fail()) {
+			cout << "Ошибка: введено неверное значение! Пожалуйста, введите число: ";
+			cin.clear();
+			cin.ignore(numeric_limits< streamsize>::max(), '\n');
+			cin >> c;
+		}
 
 		if (a != 0 && b != 0 && c != 0) 
 		{
